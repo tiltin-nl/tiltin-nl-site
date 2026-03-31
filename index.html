@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>tiltin | Amsterdam-based venture firm</title>
-  <meta name="description" content="tiltin is an Amsterdam-based venture firm focused on building, backing, and advancing impactful ventures. Contact us at Herengracht 518, Amsterdam, or via contact@tiltin.nl." />
+  <meta name="description" content="tiltin is an Amsterdam-based venture firm focused on building, backing, and advancing impactful ventures. Contact tiltin at Herengracht 518, 1017 CC Amsterdam, via contact@tiltin.nl, or by phone at +31 (0)20 308 0070." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://tiltin.nl/" />
 
@@ -42,43 +42,30 @@
     html,
     body {
       margin: 0;
+      width: 100%;
+      height: 100%;
       background: #ffffff;
+      overflow: hidden;
       font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
     }
 
     main {
       width: 100%;
+      height: 100%;
     }
 
     .hero {
       display: block;
       width: 100%;
-      height: auto;
-    }
-
-    .contact-footer {
-      padding: 14px 16px 20px;
-      text-align: center;
-      color: #2d2d2d;
-      font-size: 12px;
-      line-height: 1.6;
-    }
-
-    .contact-footer p {
-      margin: 0;
-    }
-
-    .contact-footer p + p {
-      margin-top: 4px;
-    }
-
-    .contact-footer a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .contact-footer a:hover {
-      text-decoration: underline;
+      height: 100%;
+      object-fit: contain;
+      object-position: top center;
     }
 
     .visually-hidden {
@@ -125,10 +112,6 @@
       loading="eager"
       decoding="async"
     />
-    <footer class="contact-footer" aria-label="Company information">
-      <p>tiltin · Herengracht 518, 1017 CC Amsterdam, Netherlands · +31 (0)20 308 0070 · <a href="mailto:contact@tiltin.nl">contact@tiltin.nl</a></p>
-      <p>© 2026 · Registration: Tiltin BV, 34355822</p>
-    </footer>
   </main>
 </body>
 </html>
