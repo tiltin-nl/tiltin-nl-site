@@ -37,35 +37,140 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
   <style>
-    * { box-sizing: border-box; }
+    :root {
+      --brand: #46d9d0;
+      --panel-bg: rgba(255, 255, 255, 0.74);
+      --panel-border: rgba(255, 255, 255, 0.4);
+      --text: #2f3439;
+      --shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
 
     html,
     body {
       margin: 0;
-      width: 100%;
-      height: 100%;
-      background: #ffffff;
-      overflow: hidden;
+      min-height: 100%;
       font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: #f3f3f3;
     }
 
     body {
+      min-height: 100vh;
+      background-image: url("/homepage.webp");
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .page {
+      min-height: 100vh;
       display: flex;
       align-items: stretch;
-      justify-content: center;
+      justify-content: flex-start;
+      padding: 26px;
     }
 
-    main {
-      width: 100%;
-      height: 100%;
+    .sidebar {
+      width: 440px;
+      max-width: calc(100vw - 52px);
+      padding: 28px;
+      border-radius: var(--radius);
+      background: var(--panel-bg);
+      border: 1px solid var(--panel-border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      flex-direction: column;
+      gap: 26px;
     }
 
-    .hero {
+    .brand-card {
+      background: var(--brand);
+      color: #fff;
+      border-radius: 10px;
+      padding: 28px 30px;
+    }
+
+    .brand-name {
+      margin: 0;
+      font-size: clamp(54px, 5vw, 90px);
+      line-height: 0.92;
+      font-weight: 700;
+      text-transform: lowercase;
+      letter-spacing: 0;
+    }
+
+    .brand-tag {
+      margin: 18px 0 0;
+      font-size: clamp(18px, 2vw, 27px);
+      line-height: 1.1;
+      font-weight: 400;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .contact-item {
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      align-items: center;
+      column-gap: 18px;
+    }
+
+    .icon-box {
+      width: 72px;
+      height: 72px;
+      border-radius: 10px;
+      background: var(--brand);
+      display: grid;
+      place-items: center;
+      color: #fff;
+    }
+
+    .icon-box svg {
+      width: 34px;
+      height: 34px;
       display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: center;
+      fill: currentColor;
+    }
+
+    .contact-text {
+      margin: 0;
+      font-size: clamp(18px, 2vw, 25px);
+      line-height: 1.38;
+      color: var(--text);
+      word-break: break-word;
+    }
+
+    .contact-text a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .contact-text a:hover {
+      text-decoration: underline;
+    }
+
+    .divider {
+      height: 1px;
+      background: rgba(47, 52, 57, 0.14);
+      margin-top: 2px;
+    }
+
+    .legal {
+      margin-top: auto;
+      display: grid;
+      gap: 6px;
+      font-size: 17px;
+      line-height: 1.35;
     }
 
     .visually-hidden {
@@ -78,6 +183,44 @@
       clip: rect(0, 0, 0, 0);
       border: 0;
       white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+      .page {
+        padding: 16px;
+        align-items: flex-end;
+      }
+
+      .sidebar {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px;
+        border-radius: 24px;
+        gap: 18px;
+      }
+
+      .brand-card {
+        padding: 22px;
+      }
+
+      .contact-item {
+        grid-template-columns: 58px 1fr;
+        column-gap: 14px;
+      }
+
+      .icon-box {
+        width: 58px;
+        height: 58px;
+      }
+
+      .icon-box svg {
+        width: 28px;
+        height: 28px;
+      }
+
+      .legal {
+        font-size: 15px;
+      }
     }
   </style>
 
@@ -100,18 +243,52 @@
   </script>
 </head>
 <body>
-  <main>
+  <main class="page">
     <h1 class="visually-hidden">tiltin</h1>
-    <img
-      class="hero"
-      src="/homepage.webp"
-      alt="tiltin, an Amsterdam-based venture firm."
-      width="1536"
-      height="1024"
-      fetchpriority="high"
-      loading="eager"
-      decoding="async"
-    />
+
+    <aside class="sidebar" aria-label="Company information">
+      <section class="brand-card" aria-label="Brand">
+        <h2 class="brand-name">tiltin</h2>
+        <p class="brand-tag">venture for impact</p>
+      </section>
+
+      <section class="contact-list" aria-label="Contact details">
+        <div class="contact-item">
+          <div class="icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 0 0-7 7c0 4.97 7 13 7 13s7-8.03 7-13a7 7 0 0 0-7-7Zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5ZM5 20h14v2H5z"/></svg>
+          </div>
+          <p class="contact-text">Herengracht 518<br>1017 CC Amsterdam</p>
+        </div>
+
+        <div class="contact-item">
+          <div class="icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.46 15.46 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.01-.24c1.12.37 2.33.56 3.58.56a1 1 0 0 1 1 1V21a1 1 0 0 1-1 1C10.85 22 2 13.15 2 2a1 1 0 0 1 1-1h4.5a1 1 0 0 1 1 1c0 1.25.19 2.46.56 3.58a1 1 0 0 1-.24 1.01l-2.2 2.2Z"/></svg>
+          </div>
+          <p class="contact-text"><a href="tel:+31203080070">+31 (0)20 308 0070</a></p>
+        </div>
+
+        <div class="contact-item">
+          <div class="icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4.24-8 5-8-5V6l8 5 8-5Z"/></svg>
+          </div>
+          <p class="contact-text"><a href="mailto:contact@tiltin.nl">contact@tiltin.nl</a></p>
+        </div>
+
+        <div class="contact-item">
+          <div class="icon-box" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm6.93 9h-3.16a15.72 15.72 0 0 0-1.19-4.33A8.03 8.03 0 0 1 18.93 11ZM12 4.06A13.55 13.55 0 0 1 13.74 11h-3.48A13.55 13.55 0 0 1 12 4.06ZM4.07 13h3.16a15.72 15.72 0 0 0 1.19 4.33A8.03 8.03 0 0 1 4.07 13Zm3.16-2H4.07a8.03 8.03 0 0 1 4.35-4.33A15.72 15.72 0 0 0 7.23 11Zm1.97 0a13.98 13.98 0 0 1 1.1-5h3.4a13.98 13.98 0 0 1 1.1 5Zm0 2h5.6a13.98 13.98 0 0 1-1.1 5h-3.4a13.98 13.98 0 0 1-1.1-5ZM12 19.94A13.55 13.55 0 0 1 10.26 13h3.48A13.55 13.55 0 0 1 12 19.94ZM15.58 17.33A15.72 15.72 0 0 0 16.77 13h3.16a8.03 8.03 0 0 1-4.35 4.33Z"/></svg>
+          </div>
+          <p class="contact-text"><a href="https://tiltin.nl/">www.tiltin.nl</a></p>
+        </div>
+      </section>
+
+      <div class="divider" aria-hidden="true"></div>
+
+      <section class="legal" aria-label="Legal information">
+        <div>2026 All rights reserved Tiltin BV</div>
+        <div>Registration 34355822</div>
+      </section>
+    </aside>
   </main>
 </body>
 </html>
