@@ -16,6 +16,26 @@
   <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="tiltin" />
+  <meta property="og:title" content="tiltin | Amsterdam-based venture firm" />
+  <meta property="og:description" content="tiltin is an Amsterdam-based venture firm focused on building, backing, and advancing impactful ventures." />
+  <meta property="og:url" content="https://tiltin.nl/" />
+  <meta property="og:image" content="https://tiltin.nl/homepage.webp" />
+  <meta property="og:image:type" content="image/webp" />
+  <meta property="og:image:width" content="1536" />
+  <meta property="og:image:height" content="1024" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="tiltin | Amsterdam-based venture firm" />
+  <meta name="twitter:description" content="tiltin is based in Amsterdam, the Netherlands." />
+  <meta name="twitter:image" content="https://tiltin.nl/homepage.webp" />
+
+  <meta name="geo.region" content="NL-NH" />
+  <meta name="geo.placename" content="Amsterdam" />
+  <meta name="geo.position" content="52.3667;4.8936" />
+  <meta name="ICBM" content="52.3667, 4.8936" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet" />
@@ -33,13 +53,15 @@
 
     * { box-sizing: border-box; }
 
-    html, body {
+    html,
+    body {
       margin: 0;
       width: 100%;
       height: 100%;
       overflow: hidden;
       font-family: "Manrope", system-ui, sans-serif;
       background: #f3f3f3;
+      color: var(--text);
     }
 
     body {
@@ -57,7 +79,7 @@
     }
 
     .sidebar {
-      width: 320px; /* reduced from 370 */
+      width: 320px;
       max-width: calc(100vw - 36px);
       max-height: calc(100vh - 36px);
       padding: 18px;
@@ -66,9 +88,11 @@
       border: 1px solid var(--panel-border);
       box-shadow: var(--shadow);
       backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
       display: flex;
       flex-direction: column;
       gap: 16px;
+      overflow: hidden;
     }
 
     .brand-card {
@@ -84,6 +108,8 @@
       font-size: 48px;
       font-weight: 800;
       letter-spacing: -0.03em;
+      line-height: 0.92;
+      text-transform: lowercase;
     }
 
     .brand-tag {
@@ -91,84 +117,102 @@
       font-family: "Outfit", sans-serif;
       font-size: 18px;
       font-weight: 500;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
     }
 
-    .contact-list { display: grid; gap: 12px; }
+    .contact-list {
+      display: grid;
+      gap: 18px;
+    }
 
     .contact-item {
       display: grid;
-      grid-template-columns: 48px 1fr;
-      gap: 12px;
-      align-items: center;
+      gap: 3px;
     }
-
-    .icon-box {
-      width: 48px;
-      height: 48px;
-      background: var(--brand);
-      border-radius: 10px;
-      display: grid;
-      place-items: center;
-      color: white;
-    }
-
-    .icon-box svg { width: 22px; height: 22px; }
 
     .contact-text {
       margin: 0;
       font-size: 18px;
       line-height: 1.3;
+      font-weight: 500;
+    }
+
+    .contact-text a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .contact-text a:hover {
+      text-decoration: underline;
+    }
+
+    .divider {
+      height: 1px;
+      background: rgba(45, 51, 56, 0.13);
+      margin-top: 2px;
     }
 
     .legal {
       margin-top: auto;
       font-size: 13px;
+      line-height: 1.35;
       color: var(--muted);
     }
 
     @media (max-width: 900px) {
-      html, body { overflow: auto; }
-      .sidebar { width: 100%; }
+      html,
+      body {
+        overflow: auto;
+      }
+
+      .page {
+        min-height: 100vh;
+        height: auto;
+        padding: 14px;
+        align-items: flex-end;
+      }
+
+      .sidebar {
+        width: 100%;
+        max-height: none;
+      }
     }
   </style>
 </head>
 <body>
   <main class="page">
-
-    <aside class="sidebar">
-      <section class="brand-card">
+    <aside class="sidebar" aria-label="Company information">
+      <section class="brand-card" aria-label="Brand">
         <h1 class="brand-name">tiltin</h1>
         <p class="brand-tag">venture for impact</p>
       </section>
 
-      <div class="contact-list">
+      <section class="contact-list" aria-label="Contact details">
         <div class="contact-item">
-          <div class="icon-box">📍</div>
           <p class="contact-text">Herengracht 518<br>1017 CC Amsterdam</p>
         </div>
 
         <div class="contact-item">
-          <div class="icon-box">📞</div>
-          <p class="contact-text">+31 (0)20 308 0070</p>
+          <p class="contact-text"><a href="tel:+31203080070">+31 (0)20 308 0070</a></p>
         </div>
 
         <div class="contact-item">
-          <div class="icon-box">✉️</div>
-          <p class="contact-text">contact@tiltin.nl</p>
+          <p class="contact-text"><a href="mailto:contact@tiltin.nl">contact@tiltin.nl</a></p>
         </div>
 
         <div class="contact-item">
-          <div class="icon-box">🌐</div>
-          <p class="contact-text">www.tiltin.nl</p>
+          <p class="contact-text"><a href="https://tiltin.nl/">www.tiltin.nl</a></p>
         </div>
-      </div>
+      </section>
 
-      <div class="legal">
-        2026 Tiltin BV<br>
-        Registration 34355822
-      </div>
+      <div class="divider" aria-hidden="true"></div>
+
+      <section class="legal" aria-label="Legal information">
+        <div>2026 Tiltin BV</div>
+        <div>Registration 34355822</div>
+      </section>
     </aside>
-
   </main>
 </body>
 </html>
